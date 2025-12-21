@@ -1,0 +1,28 @@
+.btnUI {
+  border-radius: 6px;
+  font: 600 20px / 1.3 Montserrat, Roboto, Helvetica, sans-serif;
+  text-align: center;
+  line-height: 1.3;
+  border: none;
+  cursor: pointer;
+  height: 58px;
+}
+.btnUI:hover {
+  background-color: var(--txt-black, #282828);
+  color: #fff;
+}
+.btnAdded, .btnAdded:hover, .btnWhite {
+  background-color: #fff;
+  color: var(--txt-black, #282828);
+}
+.btnAdded,.btnAdded:hover {
+  border: 1px solid var(--txt-black, #282828)
+}
+.btnGreen {
+  background-color: var(--green-color, #339933);
+  color: #fff;
+}
+.btnSubmitted, .btnSubmitted:hover {
+  background-color: #f1f3f4;
+  color: var(--green-color, #339933);
+}
