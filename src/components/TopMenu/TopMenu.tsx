@@ -1,24 +1,50 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
-import { useAppDispatch } from "../../store/helpers";
+import { useAppDispatch, useAppSelector } from "../../store/helpers";
 import { logout } from "../../store/slices/authSlice";
-import ButtonUI from "../UI/ButtonUI/ButtonUI";
+import { UserRole } from "../../types/index";
+import { navLinks } from "./NavLinks";
 import styles from "./TopMenu.module.css";
 
 export const TopMenu: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { user } = useAppSelector((state) => state.auth);
 
   const handleLogout = async () => {
     dispatch(logout());
-    navigate('/');
+    navigate("/");
   };
 
   return (
-    <div className={styles.TopMenuWrap}>
-      <ButtonUI type="button" btnClass="btnGreen" onClick={() => handleLogout()}>
-        Выйти
-      </ButtonUI>
+    <div className={styles.topMenuWrap}>
+      <div className={styles.topMenuCenter}>
+        <div className={styles.topMenuItems}>
+          {user &&
+            navLinks
+              .filter((link) => link.roles.includes(user.role_name as UserRole))
+              .map((link, index) => {
+                let path = link.link;
+                if (path.includes(":id")) {
+                  if (user.patient?.id_patient) {
+                    path = path.replace(":id", user.patient.id_patient.toString());
+                  }
+                  if (user.doctor?.id_doctor) {
+                    path = path.replace(":id", user.doctor.id_doctor.toString());
+                  }
+                }
+                return (
+                  <Link key={link.link} to={path} className={styles.menuItem}>
+                    {link.title}
+                  </Link>
+                );
+              })}
+        </div>
+        <div className={styles.exit} onClick={() => handleLogout()}>
+          <img src="/images/exit.svg" alt="Выйти" title="Выйти"/>
+        </div>
+      </div>
     </div>
   );
 };

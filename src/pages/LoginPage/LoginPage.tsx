@@ -43,15 +43,13 @@ const LoginPage: React.FC = () => {
   };
 
   const inputFields: IInputField[] = [
-    { id: "login", type: "text", placeholder: "Логин" },
-    { id: "password", type: "password", placeholder: "Пароль" },
+    { id: "login", type: "text", label: "Логин", placeholder: "login_01" },
+    { id: "password", type: "password", label: "Пароль", placeholder: "************" },
   ];
 
   return (
-    <main className={styles.LoginPageWrap}>
-      <h1 className={styles.title}>Авторизация</h1>
-
-      <form className={styles.form}>
+    <main className={styles.loginPageWrap}>
+      <form className={styles.loginForm}>
         <div className={styles.formInputs}>
           {inputFields.map((field) => (
             <InputUI key={field.id} field={field} register={register} />
@@ -59,11 +57,11 @@ const LoginPage: React.FC = () => {
         </div>
 
         <div className={styles.buttonsContainer}>
-          <ButtonUI type="button" onClick={handleSubmit(onSubmitAuth)}>
+          <ButtonUI type="button" btnClass="btn49" onClick={handleSubmit(onSubmitAuth)}>
             Авторизация
           </ButtonUI>
 
-          <ButtonUI type="button" btnClass="btnGreen" onClick={handleSubmit(onSubmitRegister)}>
+          <ButtonUI type="button" btnClass="btn49" onClick={handleSubmit(onSubmitRegister)}>
             Регистрация
           </ButtonUI>
         </div>

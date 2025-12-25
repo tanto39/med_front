@@ -1,0 +1,12 @@
+.dashboardWrap{
+  max-width: 1440px;
+  margin: 0 auto;
+}
+.dashboardItems{
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 52px;
+  margin: 0 30px;
+}

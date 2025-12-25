@@ -4,8 +4,12 @@ export interface User {
   second_name: string;
   first_name: string;
   middle_name?: string;
-  role_name: 'patient' | 'doctor' | 'admin';
+  role_name: UserRole;
+  patient?: Patient;
+  doctor?: Doctor;
 }
+
+export type UserRole = "patient" | "doctor" | "admin";
 
 export interface Patient {
   id_patient: number;
@@ -146,5 +150,6 @@ export interface RootState {
 export interface IInputField {
   id: string;
   type: string;
-  placeholder: string;
+  label?: string;
+  placeholder?: string;
 }

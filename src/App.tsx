@@ -17,7 +17,7 @@ function App() {
         {isLoading ? (
           <Loader />
         ) : user ? (
-          <div>
+          <div className="page">
             <TopMenu />
             <Routes>
               {privateRoutes.map(({ path, element: Element }) => (
@@ -26,11 +26,13 @@ function App() {
             </Routes>
           </div>
         ) : (
-          <Routes>
-            {publicRoutes.map(({ path, element: Element }) => (
-              <Route key={path} path={path} element={Element}></Route>
-            ))}
-          </Routes>
+          <div className="page">
+            <Routes>
+              {publicRoutes.map(({ path, element: Element }) => (
+                <Route key={path} path={path} element={Element}></Route>
+              ))}
+            </Routes>
+          </div>
         )}
 
         <Footer />

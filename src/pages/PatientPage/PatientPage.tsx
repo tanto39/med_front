@@ -3,8 +3,10 @@ import styles from "./PatientPage.module.css";
 
 const PatientPage: React.FC = () => {
   return (
-    <main className={styles.PatientPageWrap}>
-      <h1 className={styles.title}>Пациент</h1>
+    <main className={styles.patientPageWrap}>
+      <h1 className="heading">Пациент</h1>
+      <div className={styles.patientPage}>
+      </div>
     </main>
   );
 };

@@ -10,15 +10,15 @@ interface IInputProps {
 
 const InputUI: React.FC<IInputProps> = ({ field, register }) => {
   return (
-    <div>
-      <label htmlFor={field.id} className={styles["visually-hidden"]}>
-        {field.placeholder}
+    <div className={styles["inputUI"]}>
+      <label htmlFor={field.id} className={styles["inputUI__label"]}>
+        {field.label}
       </label>
       <input
         id={field.id}
         type={field.type}
         placeholder={field.placeholder}
-        className={styles.inputField}
+        className={styles.inputUI__field}
         aria-label={field.placeholder}
         required
         {...(register ? register(field.id) : {})}

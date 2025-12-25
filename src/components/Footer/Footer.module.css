@@ -1,7 +1,9 @@
 .footer{
-
+  background: var(--menu-color);
+  color: #fff;
 }
 .footerCenter{
   max-width: 1440px;
-  margin: 2rem auto;
+  margin: 0 auto;
+  padding: 20px 0;
 }

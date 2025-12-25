@@ -1,25 +1,50 @@
-:root{
-  --grey-divider: #ddd;
-  --txt-black: #282828;
-  --green-color: #339933;
+:root {
+  --block-color: #d3eaff;
+  --border-color: #a5c4e0;
+  --bg-color: #edf6ff;
+  --blue-color: #5d83a6;
+  --menu-color: #626584;
+  --block2-color: #c1e1ff;
+  --bg-gray: #393939;
 }
 * {
-	margin: 0;
-	padding: 0;
-	line-height: 1.8;
+  margin: 0;
+  padding: 0;
+  line-height: 1.8;
 }
+@font-face {
+  font-family: "Roboto";
+  src: url("/public/fonts/RobotoCondensed-Regular.ttf");
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+
 body {
-  font: 500 20px/1.3 Montserrat, Roboto, Helvetica, sans-serif;
+  font: 300 24px/1.3 Roboto, Montserrat, Helvetica, sans-serif;
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: var(--bg-color);
 }
 a {
   text-decoration: none;
   color: var(--txt-black);
 }
+.page_wrap {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+.page {
+  flex: 1 0 auto;
+  padding: 0 0 30px 0;
+}
 .heading {
   color: #282828;
-  font: 700 64px/1.1 Montserrat, Roboto, Helvetica, sans-serif;
-  margin: 0;
+  font: 500 42px/1.8 Roboto, Montserrat, Helvetica, sans-serif;
+  margin: 0 30px;
+}
+input:focus {
+  outline: none;
 }

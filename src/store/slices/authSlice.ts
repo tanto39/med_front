@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { authApi } from '../../api/auth';
-import { AuthState, LoginFormData } from '../../types';
+import { AuthState, LoginFormData, User } from '../../types';
 
 // Получаем начальное состояние из localStorage
 const getInitialState = (): AuthState => {
@@ -23,7 +23,9 @@ export const sendAuth = createAsyncThunk(
     try {
       const response = await authApi.login(formData);
       if (response.success && response.data) {
-        const { user } = response.data;
+        const user: User = { ...response.data.user };
+        user.patient = response.data.patient;
+        user.doctor = response.data.doctor;
         // Сохраняем пользователя в localStorage
         localStorage.setItem('user', JSON.stringify(user));
         // Сохраняем токен, если он есть
