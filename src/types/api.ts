@@ -1,4 +1,4 @@
-import {Patient, Doctor, UserRole} from './index';
+import {Patient, Doctor, UserRole, AmbulatoryCard, Passport, ReceptionShort} from './index';
 
 // Типы для ответов API
 export interface ApiResponse<T = any> {
@@ -37,4 +37,17 @@ export interface PatientResponse {
   policy_foms: number;
   phone_number: string;
   e_mail: string;
+}
+
+export interface PatientWithDetails {
+  id_patient?: number;
+  login?: string;
+  snils?: string;
+  policy_foms?: number;
+  phone_number?: string;
+  e_mail?: string;
+  user: UserResponse;
+  ambulatory_card?: AmbulatoryCard;
+  passport?: Passport;
+  receptions?: ReceptionShort[];
 }

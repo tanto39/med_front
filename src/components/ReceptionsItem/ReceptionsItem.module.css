@@ -1,0 +1,41 @@
+.reception {
+  background: var(--block-color);
+  border: 3px solid var(--border-color);
+  border-radius: 15px;
+  padding: 20px;
+  width: 28%;
+  margin: 0 0 24px 0;
+  cursor: pointer;
+}
+.doctorInfo, .patientInfo {
+  display: flex;
+  flex-direction: column;
+  padding: 10px 0 15px 0;
+  gap: 15px;
+}
+.doctorName {
+  background: url("../../../public/images/doctor.svg") left center no-repeat;
+  padding: 0 0 0 60px;
+}
+.profile {
+  background: url("../../../public/images/med_circle.svg") left center no-repeat;
+  padding: 0 0 0 60px;
+}
+.patientName {
+  background: url("../../../public/images/patient.svg") left center no-repeat;
+  padding: 0 0 0 60px;
+}
+.dateBlock {
+  display: flex;
+  gap: 30px;
+  border-top: 3px solid var(--border-color);
+  padding: 10px 0 0 0;
+}
+.date {
+  background: url("../../../public/images/calendar.svg") left center no-repeat;
+  padding: 0 0 0 50px;
+}
+.time {
+  background: url("../../../public/images/time.svg") left center no-repeat;
+  padding: 0 0 0 50px;
+}

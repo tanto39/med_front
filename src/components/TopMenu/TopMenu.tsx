@@ -14,7 +14,7 @@ export const TopMenu: React.FC = () => {
 
   const handleLogout = async () => {
     dispatch(logout());
-    navigate("/");
+    //navigate("/");
   };
 
   return (

@@ -59,7 +59,7 @@
   width: 44px;
   height: 44px;
   cursor: pointer;
-  /* background: url('/public/images/close_modal.svg') center center no-repeat; */
+  background: url('/public/images/close_modal.svg') center center no-repeat;
 }
 
 @media (max-width: 991px) {

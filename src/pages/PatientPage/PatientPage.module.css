@@ -2,6 +2,29 @@
   max-width: 1440px;
   margin: 0 auto;
 }
+.patientPageCenter {
+  padding: 0 30px;
+}
 .patientPage {
-  margin: 0 30px;
+  margin: 0;
+}
+.formWrap {
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.form {
+  flex-grow: 0.7;
+}
+.formBlock {
+  border-top: 3px solid var(--border-color);
+  margin: 25px 0 0 0;
+  padding: 15px 0 0 0;
+}
+.saveButton {
+  width: 200px;
+}
+.rightSide {
+  flex-grow: 0.2;
 }

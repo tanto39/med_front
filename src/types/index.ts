@@ -1,3 +1,6 @@
+import { ReactNode } from "react";
+import { PatientWithDetails } from "./api";
+
 // Базовые типы данных
 export interface User {
   login: string;
@@ -41,11 +44,34 @@ export interface Reception {
   id_doctor: number;
 }
 
+export interface ReceptionShort{
+  id_reception: number;
+  reception_date: string;
+  reception_time: string;
+  doctor_info?: {
+    id_doctor: number;
+    doctor_name: string;
+    medical_profile: string;
+  };
+  patient_info?: {
+    id_patient: number;
+    patient_name: string;
+  };
+}
+
 export interface AmbulatoryCard {
   id_ambulatory_card: number;
-  ambulatory_card_num: number;
   registration_date: string;
   registration_date_end?: string;
+  id_patient: number;
+}
+
+export interface Passport {
+  id_passport: number;
+  passport_series: number;
+  passport_number: number;
+  given_by: string;
+  given_date: string;
   id_patient: number;
 }
 
@@ -76,24 +102,6 @@ export interface Medicament {
   medicament_descr?: string;
 }
 
-// Типы для форм
-export interface LoginFormData {
-  login: string;
-  password: string;
-}
-
-export interface PatientFormData {
-  snils: string;
-  policy_foms: number;
-  phone_number: string;
-  e_mail: string;
-}
-
-export interface DoctorFormData {
-  id_medical_degree: number;
-  id_medical_profile: number;
-}
-
 // Типы для состояния Redux
 export interface AuthState {
   user: User | null;
@@ -109,11 +117,11 @@ export interface UsersState {
   error: string | null;
 }
 
-export interface PatientsState {
-  patients: Patient[];
-  currentPatient: Patient | null;
+export interface PatientState {
+  currentPatient: PatientWithDetails | null;
   isLoading: boolean;
   error: string | null;
+  successSend: boolean;
 }
 
 export interface DoctorsState {
@@ -137,19 +145,26 @@ export interface ReceptionsState {
   error: string | null;
 }
 
+export interface IMessage {
+  type: string;
+  title: string;
+  message: ReactNode;
+}
+
+export interface IMessageSlice {
+  message: IMessage
+}
+
 // Root state
 export interface RootState {
   auth: AuthState;
   users: UsersState;
-  patients: PatientsState;
+  patient: PatientState;
   doctors: DoctorsState;
   medical: MedicalState;
   receptions: ReceptionsState;
 }
 
-export interface IInputField {
-  id: string;
-  type: string;
-  label?: string;
-  placeholder?: string;
+export type IUrlParam = {
+  id: string
 }

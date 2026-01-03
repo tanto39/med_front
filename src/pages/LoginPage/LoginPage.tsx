@@ -1,15 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../store/helpers";
-import { IMessage, setMessage } from "../../store/slices/message";
+import { setMessage } from "../../store/slices/message";
 import { useForm } from "react-hook-form";
 import styles from "./LoginPage.module.css";
-import { IInputField, LoginFormData } from "../../types/index";
+import { IInputField } from "../../types/forms";
 import Loader from "../../components/UI/Loader/Loader";
 import ButtonUI from "../../components/UI/ButtonUI/ButtonUI";
 import { useNavigate } from "react-router-dom";
 import InputUI from "../../components/UI/InputUI/InputUI";
 import { sendAuth, sendRegister } from "../../store/slices/authSlice";
 import ErrorBlock from "../../components/UI/ErrorBlock/ErrorBlock";
+import { LoginFormData } from "../../types/forms";
+import { IMessage } from "../../types/index";
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();

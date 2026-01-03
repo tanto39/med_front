@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { authApi } from '../../api/auth';
-import { AuthState, LoginFormData, User } from '../../types';
+import { AuthState, User } from '../../types';
+import { LoginFormData } from '../../types/forms';
 
 // Получаем начальное состояние из localStorage
 const getInitialState = (): AuthState => {
@@ -73,7 +74,6 @@ export const sendRegister = createAsyncThunk(
 
 export const logout = createAsyncThunk('auth/logout', async () => {
   authApi.logout();
-  console.log('ddd');
 });
 
 export const authSlice = createSlice({

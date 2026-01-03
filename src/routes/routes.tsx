@@ -12,8 +12,7 @@ import Page404 from '../pages/Page404/Page404';
 
 export const publicRoutes: RouteObject[] = [
   { path: "/", element: <LoginPage/> },
-  { path: '/404', element: <Page404 /> },
-  { path: "*", element: <Navigate replace to="/404" /> },
+  { path: "*", element: <Navigate replace to="/" /> },
 ];
 
 export const privateRoutes: RouteObject[] = [
@@ -23,7 +22,7 @@ export const privateRoutes: RouteObject[] = [
   { path: '/patients', element: <PatientsPage /> },
   { path: '/patients/:id', element: <PatientPage /> },
   { path: '/medical_profiles', element: <MedicalProfilesPage /> },
-  { path: '/reception', element: <ReceptionPage /> },
+  { path: '/reception/:id', element: <ReceptionPage /> },
   { path: '/404', element: <Page404 /> },
   { path: "*", element: <Navigate replace to="/404" /> },
 ];

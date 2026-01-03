@@ -11,6 +11,9 @@
   margin: 5px 0 16px 0;
   font: 300 24px / 26px Roboto, Montserrat, Helvetica, sans-serif;
 }
+.inputUI__date {
+  width: 300px;
+}
 .inputUI__label {
   font: 300 24px / 26px Roboto, Montserrat, Helvetica, sans-serif;
 }

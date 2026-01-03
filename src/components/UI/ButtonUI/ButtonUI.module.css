@@ -8,6 +8,7 @@
   height: 60px;
   background-color: var(--blue-color);
   color: #fff;
+  width: 100%;
 }
 .btnUI:hover {
   background-color: var(--bg-gray);

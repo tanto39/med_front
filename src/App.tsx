@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 import { TopMenu } from "./components/TopMenu/TopMenu";
 import { Footer } from "./components/Footer/Footer";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { publicRoutes, privateRoutes } from "./routes/routes";
 import { MessageModal } from "./components/MessageModal/MessageModal";
 import { useAppSelector } from "./store/helpers";

@@ -1,0 +1,11 @@
+.receptions {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 15px;
+  padding: 24px 24px 0 24px;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 2%;
+}
