@@ -11,6 +11,11 @@ export interface IInputField {
   roles?: UserRole[];
 }
 
+export interface SelectOption {
+  value: string | number;
+  label: string;
+}
+
 export interface LoginFormData {
   login: string;
   password: string;
@@ -35,6 +40,9 @@ export interface PatientFormData {
 }
 
 export interface DoctorFormData {
-  id_medical_degree: number;
+  second_name: string;
+  first_name: string;
+  middle_name: string;
+  //id_medical_degree: number;
   id_medical_profile: number;
 }

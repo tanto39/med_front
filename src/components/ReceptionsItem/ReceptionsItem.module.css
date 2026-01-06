@@ -6,6 +6,10 @@
   width: 28%;
   margin: 0 0 24px 0;
   cursor: pointer;
+  transition: box-shadow 0.2s ease-in-out;
+}
+.reception:hover {
+  box-shadow: 0px 0px 0.5rem rgb(0, 0, 0);
 }
 .doctorInfo, .patientInfo {
   display: flex;

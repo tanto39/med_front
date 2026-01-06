@@ -66,7 +66,9 @@ const PatientPage: React.FC = () => {
     messageSet.type = "S";
     messageSet.title = "Сохранено";
     messageSet.message = (
-      <div><p>Изменения сохранены.</p></div>
+      <div>
+        <p>Изменения сохранены.</p>
+      </div>
     );
     dispatch(clearSend());
     dispatch(setMessage(messageSet));
@@ -101,52 +103,51 @@ const PatientPage: React.FC = () => {
         given_date: formData.given_date,
         id_patient: currentPatient?.id_patient as number,
       },
+      receptions: currentPatient?.receptions
     };
     dispatch(updatePatient({ id: currentPatient?.id_patient as number, data: patientData }));
   };
 
   return (
-    <main className={styles.patientPageWrap}>
+    <main className="pageWrap">
       {isLoading && <Loader />}
       {error && <ErrorBlock error={error} />}
       {currentPatient && (
-        <div className={styles.patientPageCenter}>
+        <div className={styles.patientPage}>
           <h1 className="heading">
             {currentPatient.user.second_name} {currentPatient.user.first_name} {currentPatient.user.middle_name}
           </h1>
-          <div className={styles.patientPage}>
-            <div className={`contentBlock ${styles.formWrap}`}>
-              <form className={styles.form}>
-                {inputFields.patientFields.map((field) => (
-                  <InputUI key={field.id} field={field} register={register} role={user?.role_name}/>
+          <div className={`contentBlock ${styles.formWrap}`}>
+            <form className={styles.form}>
+              {inputFields.patientFields.map((field) => (
+                <InputUI key={field.id} field={field} register={register} role={user?.role_name} />
+              ))}
+              <div className={styles.formBlock}>
+                {inputFields.ambulatoryFields.map((field) => (
+                  <InputUI key={field.id} field={field} register={register} role={user?.role_name} />
                 ))}
-                <div className={styles.formBlock}>
-                  {inputFields.ambulatoryFields.map((field) => (
-                    <InputUI key={field.id} field={field} register={register} role={user?.role_name}/>
-                  ))}
-                </div>
-                <div className={styles.formBlock}>
-                  {inputFields.passportFields.map((field) => (
-                    <InputUI key={field.id} field={field} register={register} role={user?.role_name}/>
-                  ))}
-                </div>
+              </div>
+              <div className={styles.formBlock}>
+                {inputFields.passportFields.map((field) => (
+                  <InputUI key={field.id} field={field} register={register} role={user?.role_name} />
+                ))}
+              </div>
 
-                <input type="hidden" id="id_passport" {...register("id_passport")} />
-                <div className={styles.saveButton}>
-                  <ButtonUI type="button" onClick={handleSubmit(onSubmit)}>
-                    Сохранить
-                  </ButtonUI>
-                </div>
-              </form>
-              <div className={styles.rightSide}>
-                <ButtonUI type="button" onClick={() => navigate("/reception/0")}>
-                  Запись на прием
+              <input type="hidden" id="id_passport" {...register("id_passport")} />
+              <div className={styles.saveButton}>
+                <ButtonUI type="button" onClick={handleSubmit(onSubmit)}>
+                  Сохранить
                 </ButtonUI>
               </div>
+            </form>
+            <div className={styles.rightSide}>
+              <ButtonUI type="button" onClick={() => navigate("/reception/0")}>
+                Запись на прием
+              </ButtonUI>
             </div>
-
-            { currentPatient.receptions && <Receptions receptions={currentPatient.receptions}/> }
           </div>
+
+          {currentPatient.receptions && <Receptions receptions={currentPatient.receptions} />}
         </div>
       )}
     </main>

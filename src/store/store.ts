@@ -4,16 +4,16 @@ import userSlice from './slices/userSlice';
 import patientSlice from './slices/patientSlice';
 import doctorSlice from './slices/doctorSlice';
 import messageSlice from './slices/message';
-//import medicalSlice from './slices/medicalSlice';
+import medicalProfileSlice from './slices/medicalProfileSlice';
 //import receptionSlice from './slices/receptionSlice';
 
 const rootReducer = combineReducers({
     auth: authSlice,
     users: userSlice,
     patient: patientSlice,
-    doctors: doctorSlice,
+    doctor: doctorSlice,
     message: messageSlice,
-    //medical: medicalSlice,
+    medicalProfile: medicalProfileSlice,
     //receptions: receptionSlice
 });
 

@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import { PatientWithDetails } from "./api";
+import { DoctorWithDetails, PatientWithDetails } from "./api";
+import { SelectOption } from "./forms";
 
 // Базовые типы данных
 export interface User {
@@ -32,8 +33,13 @@ export interface Doctor {
 
 export interface MedicalProfile {
   id_medical_profile: number;
-  name_medical_profile: string;
+  name_medical_profile?: string;
   descr_medical_profile?: string;
+}
+
+export interface MedicalDegree {
+  id_medical_degree: number;
+  name_medical_degree: string;
 }
 
 export interface Reception {
@@ -125,14 +131,15 @@ export interface PatientState {
 }
 
 export interface DoctorsState {
-  doctors: Doctor[];
-  currentDoctor: Doctor | null;
+  currentDoctor: DoctorWithDetails | null;
   isLoading: boolean;
   error: string | null;
+  successSend: boolean;
 }
 
-export interface MedicalState {
+export interface MedicalProfileState {
   profiles: MedicalProfile[];
+  optionsProfiles: SelectOption[];
   currentProfile: MedicalProfile | null;
   isLoading: boolean;
   error: string | null;
@@ -148,7 +155,7 @@ export interface ReceptionsState {
 export interface IMessage {
   type: string;
   title: string;
-  message: ReactNode;
+  message: ReactNode | string;
 }
 
 export interface IMessageSlice {
@@ -161,7 +168,7 @@ export interface RootState {
   users: UsersState;
   patient: PatientState;
   doctors: DoctorsState;
-  medical: MedicalState;
+  medicalProfile: MedicalProfileState;
   receptions: ReceptionsState;
 }
 

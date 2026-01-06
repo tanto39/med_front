@@ -2,7 +2,7 @@ import { apiClient } from './apiClient';
 import { ApiResponse } from '../types/api';
 import { MedicalProfile } from '../types';
 
-export const medicalApi = {
+export const medicalProfileApi = {
   getAllProfiles: async (): Promise<ApiResponse<MedicalProfile[]>> => {
     return apiClient.get<ApiResponse<MedicalProfile[]>>('/medical/profiles');
   },

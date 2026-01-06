@@ -9,27 +9,25 @@ const Dashboard: React.FC = () => {
   const { user } = useAppSelector((state) => state.auth);
 
   return (
-    <main className={styles.dashboardWrap}>
+    <main className="pageWrap">
       <h1 className="heading">Медицинская информационная система</h1>
       <div className={styles.dashboardItems}>
-          {user &&
-            boardLinks
-              .filter((board) => board.roles.includes(user.role_name as UserRole))
-              .map((board, index) => {
-                let path = board.link;
-                if (path.includes(":id")) {
-                  if (user.patient?.id_patient) {
-                    path = path.replace(":id", user.patient.id_patient.toString());
-                  }
-                  if (user.doctor?.id_doctor) {
-                    path = path.replace(":id", user.doctor.id_doctor.toString());
-                  }
+        {user &&
+          boardLinks
+            .filter((board) => board.roles.includes(user.role_name as UserRole))
+            .map((board, index) => {
+              let path = board.link;
+              if (path.includes(":id")) {
+                if (user.patient?.id_patient) {
+                  path = path.replace(":id", user.patient.id_patient.toString());
                 }
-                return (
-                  <DashboardItem key={board.title} item={board} />
-                );
-              })}
-        </div>
+                if (user.doctor?.id_doctor) {
+                  path = path.replace(":id", user.doctor.id_doctor.toString());
+                }
+              }
+              return <DashboardItem key={board.title} item={board} />;
+            })}
+      </div>
     </main>
   );
 };
