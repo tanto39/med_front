@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
-import { medicalProfileApi } from "../../api/medicalProfileApi";
+import { medicalProfileApi } from "../../api/medicalProfile";
 import { MedicalProfile, MedicalProfileState } from "../../types/index";
 
 const initialState: MedicalProfileState = {
@@ -8,6 +8,7 @@ const initialState: MedicalProfileState = {
   currentProfile: null,
   isLoading: false,
   error: null,
+  successSend: false,
 };
 
 // Получение всех медицинских профилей
@@ -29,18 +30,11 @@ export const fetchMedicalProfileById = createAsyncThunk(
   "medicalProfiles/fetchById",
   async (id: number, { rejectWithValue }) => {
     try {
-      // Если в API нет отдельного эндпоинта для получения по ID,
-      // можно получить из списка или сделать новый запрос
-      const response = await medicalProfileApi.getAllProfiles();
+      const response = await medicalProfileApi.getProfile(id);
       if (response.success && response.data) {
-        const profile = response.data.find((p) => p.id_medical_profile === id);
-        if (profile) {
-          return profile;
-        } else {
-          return rejectWithValue("Медицинский профиль не найден");
-        }
+        return response.data;
       } else {
-        return rejectWithValue(response.error || "Ошибка загрузки медицинского профиля");
+        return rejectWithValue(response.error || "Ошибка загрузки");
       }
     } catch (error: any) {
       return rejectWithValue(error.message || "Ошибка сети");
@@ -100,6 +94,10 @@ const medicalProfileSlice = createSlice({
     clearError: (state) => {
       state.error = null;
     },
+    clearSend(state) {
+      state.successSend = false;
+      state.error = null;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -144,6 +142,7 @@ const medicalProfileSlice = createSlice({
         state.isLoading = false;
         state.profiles.push(action.payload);
         state.currentProfile = action.payload;
+        state.successSend = true;
       })
       .addCase(createMedicalProfile.rejected, (state, action) => {
         state.isLoading = false;
@@ -166,6 +165,7 @@ const medicalProfileSlice = createSlice({
         if (state.currentProfile?.id_medical_profile === action.payload.id_medical_profile) {
           state.currentProfile = action.payload;
         }
+        state.successSend = true;
       })
       .addCase(updateMedicalProfile.rejected, (state, action) => {
         state.isLoading = false;
@@ -175,7 +175,7 @@ const medicalProfileSlice = createSlice({
 });
 
 // Экспортируем actions
-export const { clearCurrentProfile, setCurrentProfile, clearError } = medicalProfileSlice.actions;
+export const { clearCurrentProfile, setCurrentProfile, clearError, clearSend } = medicalProfileSlice.actions;
 
 // Экспортируем reducer
 export default medicalProfileSlice.reducer;

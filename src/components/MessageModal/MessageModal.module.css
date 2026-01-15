@@ -7,7 +7,7 @@
   transform: translate(-50%, -50%);
   z-index: 1050;
   border-radius: 12px;
-  background: var(--green-color, #393);
+  background: var(--blue-color);
   color: #fff;
   font-weight: 600;
   padding: 32px;

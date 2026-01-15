@@ -46,3 +46,10 @@ export interface DoctorFormData {
   //id_medical_degree: number;
   id_medical_profile: number;
 }
+
+export interface ReceptionFormData {
+  id_doctor: number;
+  id_patient: number;
+  id_medical_profile: number;
+  reception_date: string;
+}

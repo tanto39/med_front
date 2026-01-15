@@ -11,7 +11,7 @@ const initialState: PatientState = {
   error: null,
 };
 
-export const fetchPatient = createAsyncThunk("patients/fetchOne", async (id: number, { rejectWithValue }) => {
+export const fetchPatient = createAsyncThunk("patient/fetchOne", async (id: number, { rejectWithValue }) => {
   try {
     const response = await patientsApi.getPatient(id);
     if (response.success && response.data) {
@@ -26,7 +26,7 @@ export const fetchPatient = createAsyncThunk("patients/fetchOne", async (id: num
 });
 
 export const updatePatient = createAsyncThunk(
-  "patients/update",
+  "patient/update",
   async ({ id, data }: { id: number; data: PatientWithDetails }, { rejectWithValue }) => {
     try {
       const response = await patientsApi.updatePatient(id, data);
@@ -74,7 +74,7 @@ export const clearSend = () => async (dispach: AppDispatch) => {
 };
 
 export const patientSlice = createSlice({
-  name: "patients",
+  name: "patient",
   initialState,
   reducers: {
     clearCurrentPatient: (state) => {

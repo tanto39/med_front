@@ -46,11 +46,17 @@ export interface Reception {
   id_reception: number;
   reception_date: string;
   reception_time: string;
-  id_ambulatory_card: number;
   id_doctor: number;
+  id_patient: number,
+  id_medical_profile: number,
 }
 
-export interface ReceptionShort{
+export interface ReceptionWithSick {
+  reception: Reception;
+  sicknesses?: Sickness[];
+}
+
+export interface ReceptionShort {
   id_reception: number;
   reception_date: string;
   reception_time: string;
@@ -84,17 +90,15 @@ export interface Passport {
 export interface Sickness {
   id_sickness: number;
   id_diagnos: number;
-  id_reception: number;
   complaint?: string;
   medication_text?: string;
+  sick_sheet?: SickSheet;
 }
 
 export interface SickSheet {
   id_sick_sheet: number;
-  sick_sheet_num: number;
   sick_sheet_date: string;
   next_date?: string;
-  id_sickness: number;
 }
 
 export interface Diagnos {
@@ -130,11 +134,25 @@ export interface PatientState {
   successSend: boolean;
 }
 
-export interface DoctorsState {
+export interface PatientsState {
+  patients: PatientWithDetails[];
+  optionsPatients: SelectOption[];
+  isLoading: boolean;
+  error: string | null;
+}
+
+export interface DoctorState {
   currentDoctor: DoctorWithDetails | null;
   isLoading: boolean;
   error: string | null;
   successSend: boolean;
+}
+
+export interface DoctorsState {
+  doctors: DoctorWithDetails[];
+  optionsDoctors: SelectOption[];
+  isLoading: boolean;
+  error: string | null;
 }
 
 export interface MedicalProfileState {
@@ -143,13 +161,23 @@ export interface MedicalProfileState {
   currentProfile: MedicalProfile | null;
   isLoading: boolean;
   error: string | null;
+  successSend: boolean;
 }
 
-export interface ReceptionsState {
-  receptions: Reception[];
-  currentReception: Reception | null;
+export interface ReceptionState {
+  reception: Reception | null;
+  sickness: Sickness[] | null;
   isLoading: boolean;
   error: string | null;
+  successSend: boolean;
+}
+export interface DiagnosesState {
+  diagnoses: Diagnos[];
+  optionsDiagnoses: SelectOption[];
+  currentDiagnos: Diagnos | null;
+  isLoading: boolean;
+  error: string | null;
+  successSend: boolean;
 }
 
 export interface IMessage {
@@ -159,7 +187,7 @@ export interface IMessage {
 }
 
 export interface IMessageSlice {
-  message: IMessage
+  message: IMessage;
 }
 
 // Root state
@@ -167,11 +195,12 @@ export interface RootState {
   auth: AuthState;
   users: UsersState;
   patient: PatientState;
-  doctors: DoctorsState;
+  doctor: DoctorState;
   medicalProfile: MedicalProfileState;
-  receptions: ReceptionsState;
+  diagnos: DiagnosesState;
+  reception: ReceptionState;
 }
 
 export type IUrlParam = {
-  id: string
-}
+  id: string;
+};

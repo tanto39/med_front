@@ -1,21 +1,21 @@
 import { apiClient } from './apiClient';
-import { ApiResponse } from '../types/api';
+import { ApiResponse, DoctorWithDetails } from '../types/api';
 import { Doctor } from '../types';
 
 export const doctorsApi = {
-  getAllDoctors: async (): Promise<ApiResponse<any[]>> => {
-    return apiClient.get<ApiResponse<any[]>>('/doctors');
+  getAllDoctors: async (): Promise<ApiResponse<DoctorWithDetails[]>> => {
+    return apiClient.get<ApiResponse<DoctorWithDetails[]>>('/doctors');
   },
 
-  getDoctor: async (id: number): Promise<ApiResponse<any>> => {
-    return apiClient.get<ApiResponse<any>>(`/doctors/${id}`);
+  getDoctor: async (id: number): Promise<ApiResponse<DoctorWithDetails>> => {
+    return apiClient.get<ApiResponse<DoctorWithDetails>>(`/doctors/${id}`);
   },
 
-  createDoctor: async (data: any): Promise<ApiResponse<any>> => {
-    return apiClient.post<ApiResponse<any>>('/doctors', data);
+  createDoctor: async (data: any): Promise<ApiResponse<DoctorWithDetails>> => {
+    return apiClient.post<ApiResponse<DoctorWithDetails>>('/doctors', data);
   },
 
-  updateDoctor: async (id: number, data: Partial<Doctor>): Promise<ApiResponse<any>> => {
-    return apiClient.put<ApiResponse<any>>(`/doctors/${id}`, data);
+  updateDoctor: async (id: number, data: Partial<Doctor>): Promise<ApiResponse<DoctorWithDetails>> => {
+    return apiClient.put<ApiResponse<DoctorWithDetails>>(`/doctors/${id}`, data);
   },
 };

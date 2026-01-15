@@ -54,7 +54,7 @@ export interface PatientWithDetails {
 
 export interface DoctorWithDetails {
   id_doctor?: number;
-  login: string;
+  login?: string;
   medical_degree?: MedicalDegree;
   medical_profile?: MedicalProfile;
   user: UserResponse;
